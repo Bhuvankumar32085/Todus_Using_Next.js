@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function SignupPage() {
@@ -21,7 +22,7 @@ export default function SignupPage() {
 
       if (res.ok) {
         setMessage("✅ Signup successful, redirecting to login...");
-        window.location.href = "/login"; 
+        window.location.href = "/login";
       } else {
         setMessage("❌ " + (data.error || "Signup failed"));
       }
@@ -92,6 +93,12 @@ export default function SignupPage() {
         {message && (
           <p className="mt-4 text-center text-sm text-gray-600">{message}</p>
         )}
+        <p className="mt-4 text-center text-sm text-gray-600">
+          Already have an account?{" "}
+          <Link href="/login" className="text-blue-500 hover:underline">
+            Login
+          </Link>
+        </p>
       </form>
     </div>
   );
