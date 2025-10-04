@@ -2,10 +2,10 @@ import { connectDB } from "@/app/lib/connectDB";
 import User from "@/models/uaerModel";
 import bcrypt from "bcryptjs";
 
-connectDB().then(() => console.log("DB Connected"));
 
 export const POST = async (req) => {
   try {
+    connectDB().then(() => console.log("DB Connected"));
     const { name, email, password } = await req.json();
     if (!name || !email || !password) {
       return Response.json(
