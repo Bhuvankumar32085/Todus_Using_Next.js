@@ -1,8 +1,6 @@
 import mongoose from "mongoose";
 
-const mongoUri =
-  "mongodb+srv://bhuvankumar66666_db_user:ld6HnVy21maJKuvd@learnnextjs.bd47pub.mongodb.net/?retryWrites=true&w=majority&appName=LearnNextjs";
-
+const mongoUri = process.env.DB_URI;
 export const connectDB = async () => {
   try {
     if (mongoose.connection.readyState === 0) {
@@ -13,4 +11,3 @@ export const connectDB = async () => {
     console.error("MongoDB connection error:", error);
   }
 };
-
