@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 
 export const POST = async (req) => {
   try {
-    connectDB().then(() => console.log("DB Connected"));
+    await connectDB().then(() => console.log("DB Connected"));
     const { name, email, password } = await req.json();
     if (!name || !email || !password) {
       return Response.json(

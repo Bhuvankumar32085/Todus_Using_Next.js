@@ -7,7 +7,7 @@ import { NextResponse } from "next/server";
 
 export const POST = async (req) => {
   try {
-    connectDB().then(() => console.log("DB Connected"));
+    await connectDB().then(() => console.log("DB Connected"));
     const { email, password } = await req.json();
     if (!email || !password) {
       return NextResponse.json({ error: "All fields are required" }, { status: 400 });

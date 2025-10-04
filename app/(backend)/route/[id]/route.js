@@ -4,7 +4,7 @@ import Todo from "@/models/todoModel";
 import User from "@/models/uaerModel";
 
 export const GET = async (req, { params }) => {
-  connectDB().then(() => console.log("DB Connected"));
+ await connectDB().then(() => console.log("DB Connected"));
   const userId = await verifyAuth(req);
   const { id } = await params;
   const todo = await Todo.findById(id);
@@ -15,6 +15,7 @@ export const GET = async (req, { params }) => {
 };
 
 export const PUT = async (req, { params }) => {
+  await connectDB().then(() => console.log("DB Connected"));
   const { id } = await params;
   const { title } = await req.json();
   const todo = await Todo.findById(id);
@@ -41,6 +42,7 @@ export const PUT = async (req, { params }) => {
 };
 
 export const PATCH = async (req, { params }) => {
+  await connectDB().then(() => console.log("DB Connected"));
   const { id } = await params;
   const { completed } = await req.json();
 
@@ -67,6 +69,7 @@ export const PATCH = async (req, { params }) => {
 };
 
 export const DELETE = async (req, { params }) => {
+  await connectDB().then(() => console.log("DB Connected"));
   const { id } = await params;
 
   const todu = await Todo.findByIdAndDelete(id);

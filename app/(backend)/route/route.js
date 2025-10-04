@@ -4,7 +4,7 @@ import Todo from "@/models/todoModel";
 import User from "@/models/uaerModel";
 
 export async function GET(req) {
-  connectDB().then(() => console.log("DB Connected"));
+ await connectDB().then(() => console.log("DB Connected"));
   const userId = await verifyAuth(req);
   if (!userId) {
     return Response.json("Unauthorized", { status: 401 });
@@ -22,7 +22,7 @@ export async function GET(req) {
 }
 
 export const POST = async (req) => {
-  connectDB().then(() => console.log("DB Connected"));
+  await connectDB().then(() => console.log("DB Connected"));
   const userId = await verifyAuth(req);
   const body = await req.json();
 
